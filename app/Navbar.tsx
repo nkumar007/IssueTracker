@@ -3,7 +3,6 @@
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import {useSession} from "next-auth/react";
-import React from "react";
 import {AiFillBug} from "react-icons/ai";
 import classNames from "classnames";
 import {
@@ -14,6 +13,8 @@ import {
   Flex,
   Text,
 } from "@radix-ui/themes";
+
+import Skeleton from "@/app/components/Skeleton";
 
 const Navbar = () => {
   return (
@@ -36,9 +37,13 @@ const Navbar = () => {
 const AuthStatus = () => {
   const {status, data: session} = useSession();
 
-  if (status === "loading") return null;
+  if (status === "loading") return <Skeleton width="3rem" />;
   if (status === "unauthenticated")
-    return <Link href="/api/auth/signin">LogIn</Link>;
+    return (
+      <Link className="nav-link" href="/api/auth/signin">
+        LogIn
+      </Link>
+    );
   return (
     <Box>
       <DropdownMenu.Root>
@@ -56,9 +61,7 @@ const AuthStatus = () => {
             <Text size="2">{session!.user!.email}</Text>
           </DropdownMenu.Label>
           <DropdownMenu.Item>
-            <Link className="nav-link" href="/api/auth/signout">
-              LogOut
-            </Link>
+            <Link href="/api/auth/signout">LogOut</Link>
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
