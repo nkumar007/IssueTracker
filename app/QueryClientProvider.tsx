@@ -1,3 +1,5 @@
+"use client";
+
 import {
   QueryClient,
   QueryClientProvider as ReactQueryClientProvider,
@@ -13,3 +15,5 @@ const QueryClientProvider = ({children}: PropsWithChildren) => {
     </ReactQueryClientProvider>
   );
 };
+
+export default QueryClientProvider;

@@ -6,7 +6,7 @@ import IssueDetails from "./IssueDetails";
 import DeleteIssueButton from "./DeleteIssueButton";
 import {getServerSession} from "next-auth";
 import authOptions from "@/app/auth/authOptions";
-import AssigneeSelect from "@/app/api/issues/[id]/AssigneeSelect";
+import AssigneeSelect from "@/app/issues/[id]/AssigneeSelect";
 
 interface Props {
   params: {id: string};
